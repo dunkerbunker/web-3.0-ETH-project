@@ -1,22 +1,15 @@
+// https://eth-goerli.alchemyapi.io/v2/ERWrbHvW68KnCKEjTxVjBC1TngJLElPL
 
-const main = async () => {
-  const Transactions = await hre.ethers.getContractFactory("Transactions");
-  const transactions = await Transactions.deploy();
+require ('@nomiclabs/hardhat-waffle');
 
-  await Transactions.deployed();
-
-  console.log("Transactions deployed to:", transactions.address);
-}
-
-
-const runMain = async () => {
-  try {
-    await main();
-    process.exit(0);
-  } catch (error) {
-    console.error(error);
-    process.exit(1);
+module.exports = {
+  solidity: '0.8.0',
+  defaultNetwork: 'goerli',
+  networks: {
+    hardhat:{},
+    goerli: {
+      url: 'https://eth-goerli.alchemyapi.io/v2/ERWrbHvW68KnCKEjTxVjBC1TngJLElPL',
+      accounts: ['9dad57207b2f4fd0975864688e1ef4509438fd7d825a1e24f63fcbb0f9df5aff']
+    }
   }
 }
-
-runMain();
